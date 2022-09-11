@@ -27,7 +27,6 @@ function isReachable(s, d, nodes, neighbors, excludes) {
     	visited[node] = null
     }
   }
-    
 
   let queue = [];
 
@@ -36,8 +35,8 @@ function isReachable(s, d, nodes, neighbors, excludes) {
 
   while (queue.length != 0) {
     n = queue.shift();
-/*     if(excludes.length === [4,5,6,7,8].length && excludes.every(function(value, index) { return value === [4,5,6,7,8][index]}))
-        console.log(n,queue,visited,excludes.filter(el=> el != d)) */
+    // if(excludes.length === [4,5,6,7,8].length && excludes.every(function(value, index) { return value === [4,5,6,7,8][index]}))
+    //   console.log(n,queue,visited,excludes.filter(el=> el != d)) 
     if (n == d)
       return true;
     for (let i = 0; i < [...neighbors.get(n)].length; i++) {
@@ -46,7 +45,6 @@ function isReachable(s, d, nodes, neighbors, excludes) {
         visited[[...neighbors.get(n)][i]] = true;
       }
     }
-
   }
 
   return false;
@@ -84,8 +82,7 @@ function Kuratowski(list) {
   console.log(k5)
 
   nc3.forEach(element => {
-  	let checking = 0
-/*     let n = new Map(); */
+    let checking = 0
     let nc33 = combinations([...nodes].filter(node => !element.includes(node)), 3)
     nc33.forEach(e => {
     	let excludes = [...element, ...e]
@@ -99,20 +96,20 @@ function Kuratowski(list) {
       if (checking == 9) k33.push(element)
     })
   })
-  
+	
   console.log(k33)
 	
   return [!!k5.length,!!k33.length]
 }
 
 const solve = (list) => {
+  console.time()	
   //console.log(Kuratowski(list))
   let [k5Check, k33Check] = Kuratowski(list);
   const result = !k5Check && !k33Check
-  /* console.log(!cliques.some(el => el.length == 5) && !k33Check) */
   console.log(`Planarity : ${result}`)
+  console.timeEnd()
 }
-
 
 let list = [
   [1, 2, 3, 5],
@@ -126,9 +123,7 @@ let list = [
   [9, 2, 7, 10],
   [10, 3, 8, 9],
 ];
-console.time()
 solve(list)
-console.timeEnd()
 
 let list2 = [
 	[1, 2, 3],
