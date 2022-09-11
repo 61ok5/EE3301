@@ -22,9 +22,9 @@ const combinations = (collection, combinationLength) => {
 function isReachable(s, d, nodes, neighbors, excludes) {
   let visited = new Array([...nodes].length);
   for (const node of [...nodes]) {
-  	visited[node] = false;
-    if(excludes.filter(el=> el != d).includes(node)){
-    	visited[node] = null
+    visited[node] = false;
+    if (excludes.filter(el => el != d).includes(node)) {
+      visited[node] = null
     }
   }
 
@@ -35,8 +35,6 @@ function isReachable(s, d, nodes, neighbors, excludes) {
 
   while (queue.length != 0) {
     n = queue.shift();
-    // if(excludes.length === [4,5,6,7,8].length && excludes.every(function(value, index) { return value === [4,5,6,7,8][index]}))
-    //   console.log(n,queue,visited,excludes.filter(el=> el != d)) 
     if (n == d)
       return true;
     for (let i = 0; i < [...neighbors.get(n)].length; i++) {
@@ -45,6 +43,7 @@ function isReachable(s, d, nodes, neighbors, excludes) {
         visited[[...neighbors.get(n)][i]] = true;
       }
     }
+
   }
 
   return false;
@@ -67,7 +66,7 @@ function Kuratowski(list) {
   }
 
   const nc5 = combinations([...nodes], 5)
-	const nc3 = combinations([...nodes], 3)
+  const nc3 = combinations([...nodes], 3)
 
   nc5.forEach(element => {
     let checking = 0
@@ -78,33 +77,32 @@ function Kuratowski(list) {
       if (checking == 20) k5.push(element)
     })
   })
-  
-  console.log(k5)
+
+  // console.log(k5)
 
   nc3.forEach(element => {
-    let checking = 0
     let nc33 = combinations([...nodes].filter(node => !element.includes(node)), 3)
     nc33.forEach(e => {
-    	let excludes = [...element, ...e]
+      let checking = 0
+      let excludes = [...element, ...e]
       element.forEach(el => {
         e.forEach(d => {
-          if(el != d)
-            if(isReachable(el, d, nodes, neighbors, excludes))
-            	checking++
+          if (el != d)
+            if (isReachable(el, d, nodes, neighbors, excludes))
+              checking++
         })
       })
       if (checking == 9) k33.push(element)
     })
   })
-	
-  console.log(k33)
-	
-  return [!!k5.length,!!k33.length]
+
+  // console.log(k33)
+
+  return [!!k5.length, !!k33.length]
 }
 
 const solve = (list) => {
-  console.time()	
-  //console.log(Kuratowski(list))
+  console.time()
   let [k5Check, k33Check] = Kuratowski(list);
   const result = !k5Check && !k33Check
   console.log(`Planarity : ${result}`)
@@ -126,11 +124,11 @@ let list = [
 solve(list)
 
 let list2 = [
-	[1, 2, 3],
-	[2, 1, 3],
-	[3, 1, 2, 4, 5],
-	[4, 3, 5],
-	[5, 3, 4]
+  [1, 2, 3],
+  [2, 1, 3],
+  [3, 1, 2, 4, 5],
+  [4, 3, 5],
+  [5, 3, 4]
 ]
 solve(list2)
 
@@ -142,3 +140,14 @@ let list3 = [
   [5, 1, 2, 3, 4],
 ]
 solve(list3)
+
+let list4 = [
+  [1, 2, 3, 6],
+  [2, 1, 4, 6, 7],
+  [3, 1, 4, 5, 7],
+  [4, 2, 3, 5],
+  [5, 3, 4, 6],
+  [6, 1, 2, 5, 7],
+  [7, 2, 3, 6],
+]
+solve(list4)
