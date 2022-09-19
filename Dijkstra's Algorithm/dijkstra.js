@@ -15,8 +15,7 @@ const dijkstra = (number, start) => {
 
   while (queue.length > 0) {
     console.log('result', result)
-    console.log('visited', visited)
-    console.log('queue', queue)
+    console.log('visited', visited, 'queue', queue)
     let [dist, idx] = matrix[visited.at(-1)].reduce((prev, curr, idx) => {
       result[idx] = result[idx] > (result[visited.at(-1)] + curr) ? (result[visited.at(-1)] + curr) : result[idx]
       return prev = prev[0] > result[idx] && queue.includes(idx) ? [result[idx], idx] : prev
@@ -27,9 +26,8 @@ const dijkstra = (number, start) => {
   }
 
   console.log('result', result)
-  console.log('visited', visited)
-  console.log('queue', queue)
-
+  console.log('visited', visited, 'queue', queue)
+  
 }
 
 dijkstra('4382682697512640', 6)
