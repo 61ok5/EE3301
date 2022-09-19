@@ -151,3 +151,5 @@ let list4 = [
   [7, 2, 3, 6],
 ]
 solve(list4)
+
+//bug to be fixed: other included nodes should not be connected when detecting
