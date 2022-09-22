@@ -11,6 +11,7 @@ const dijkstra = (number, start) => {
     const src = num[i]
     const dest = num[i + 1]
     const weight = Math.abs(src - dest)
+    // console.log(`${src} ${dest} ${weight}`)
     matrix[src][dest] = weight
   }
 
