@@ -1,4 +1,4 @@
-const dijkstra = (number, start) => {
+const dijkstra = (number, start, mode) => {
   const num = Array.from(number).map(el => Number(el))
   let matrix = new Array(10).fill(0).map(() => new Array(10).fill(Infinity));
   let visited = [start]
@@ -13,6 +13,7 @@ const dijkstra = (number, start) => {
     const weight = Math.abs(src - dest)
     // console.log(`${src} ${dest} ${weight}`)
     matrix[src][dest] = weight
+    if(!mode) matrix[dest][src] = weight
   }
 
   while (queue.length > 0) {
@@ -34,6 +35,8 @@ const dijkstra = (number, start) => {
   
 }
 
-dijkstra('4382682697512640', 6)
+ dijkstra('4382682697512640', 6, 1)
 
-// dijkstra('1906257239706356', 0)
+// dijkstra('1906257239706356', 0, 1)
+
+// dijkstra('7298261503910431', 0, 0)
