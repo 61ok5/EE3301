@@ -34,4 +34,6 @@ const dijkstra = (number, start) => {
   
 }
 
-dijkstra('1906257239706356', 0)
+dijkstra('4382682697512640', 6)
+
+// dijkstra('1906257239706356', 0)
