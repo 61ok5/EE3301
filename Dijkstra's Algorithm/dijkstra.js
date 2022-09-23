@@ -35,7 +35,9 @@ const dijkstra = (number, start, mode) => {
   
 }
 
- dijkstra('4382682697512640', 6, 1)
+dijkstra('4189082145367516', 0, 0)
+
+// dijkstra('4382682697512640', 6, 1)
 
 // dijkstra('1906257239706356', 0, 1)
 
