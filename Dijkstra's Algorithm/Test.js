@@ -1,17 +1,17 @@
 const dijkstra = (number, start, mode) => {
   const num = Array.from(number).map(el => Number(el))
-  let matrix = new Array(10).fill(0).map(() => new Array(10).fill(Infinity));
+  let matrix = new Array(7).fill(0).map(() => new Array(7).fill(Infinity));
   let visited = [start]
   let queue = [...(new Set(num))].sort().filter(el => el != start)
-  let excludes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter(el => !queue.includes(el)).filter(el => el != start)
-  let result = new Array(10).fill(Infinity)
+  let excludes = [0, 1, 2, 3, 4, 5, 6].filter(el => !queue.includes(el)).filter(el => el != start)
+  let result = new Array(7).fill(Infinity)
   result[start] = 0
 
   for (let i = 0; i < num.length - 1; i++) {
     const src = num[i]
     const dest = num[i + 1]
     const weight = Math.abs(src - dest)
-    // console.log(`${src} ${dest} ${weight}`)
+    console.log(`${src} ${dest} ${weight}`)
     matrix[src][dest] = weight
     if (!mode) matrix[dest][src] = weight
   }
@@ -41,7 +41,7 @@ const dijkstra = (number, start, mode) => {
 
 }
 
-dijkstra('7298261503910431', 7, 1)
+dijkstra('01263256034', 6, 0)
 
 // dijkstra('4382682697512640', 6, 1)
 
