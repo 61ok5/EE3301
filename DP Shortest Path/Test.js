@@ -14,8 +14,8 @@ const minFnc = (graph, node, end, path, cost, result) => {
       neighbors.push([el, idx]);
   })
   
-  // console.log(path, neighbors.filter(el => el[1] == node))
-  // console.log(neighbors.map(el => `node ${node} + node ${el[1]}: ${cost} + ${el[0]}`))
+  console.log(path, neighbors.filter(el => el[1] == node))
+  console.log(neighbors.map(el => `node ${node} + node ${el[1]}: ${cost} + ${el[0]}`))
   
   return Math.min(...neighbors.map(el => el[0] + minFnc(graph, el[1], end, [...path, el[1]], cost + el[0], result)))
 }
@@ -47,5 +47,16 @@ const graph = [
   [-1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
   [-1, 4, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
 ]
+
+/* const graphTest = [
+    0A  1B  2C  3D  4E  5F  6G
+0A [-1, -1, -1, -1, -1, -1, -1],
+1B [-1, -1, -1, -1, -1, -1, -1],
+2C [-1, -1, -1, -1, -1, -1, -1],
+3D [-1, -1, -1, -1, -1, -1, -1],
+4E [-1, -1, -1, -1, -1, -1, -1],
+5F [-1, -1, -1, -1, -1, -1, -1],
+6G [-1, -1, -1, -1, -1, -1, -1],
+] */
 
 shortestPath(graph, 0, 1)
