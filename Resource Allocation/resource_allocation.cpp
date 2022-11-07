@@ -25,16 +25,19 @@ int main()
             int t = -1;
             int m = -1;
             int tp = -1;
-            int p = -1;
+            string p = "";
             for (int k = 0; k <= j; k++){
                 t = r[i-1][k] + r[i][j-k];
                 tp++;
                 cout << r[i-1][k] << " + " << r[i][j-k];
                 if (j != k)
                     cout << ", ";
+                if (t == m){
+                    p += (" or " + to_string(tp));
+                }
                 if (t > m){
                     m = t;
-                    p = tp;  
+                    p = to_string(tp);
                 }
             }
             a[j] = m;
