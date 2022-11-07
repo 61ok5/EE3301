@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int x = 6, n = 4; //r4(x4) til n, x item
+    int x = 6, n = 4; // n rows e.g. r4(x4), 0 to x, x + 1 items 
     int r[n][x+1] = {
         {0, 3, 6, 8, 10, 13, 13},
         {0, 2, 3, 5, 7, 9, 12},
